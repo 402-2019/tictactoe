@@ -49,21 +49,26 @@ public class TicTacToeGame {
         }
 
         board.printBoard();
-      
+
         if (board.getIsTie()) {
+            scoreboard.setTie(scoreboard.getTie()+1);
             System.out.println("It is a tie!");
-        } else {
+        }
+        else {
+
+            if(board.getWinner().equals(Player.X))
+            {
+                scoreboard.setPlayerXScore(scoreboard.getPlayerXScore()+1);
+            }
+            else
+            {
+                scoreboard.setPlayerOScore(scoreboard.getPlayerOScore()+1);
+            }
+
             System.out.println("Player " + board.getWinner() + " has won the game!");
         }
 
-        if(board.getWinner().equals(Player.X))
-        {
-            scoreboard.setPlayerXScore(scoreboard.getPlayerXScore()+1);
-        }
-        else
-        {
-            scoreboard.setPlayerOScore(scoreboard.getPlayerOScore()+1);
-        }
+
         scoreboard.showScoreboard();
     }
 
