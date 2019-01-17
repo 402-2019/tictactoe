@@ -8,10 +8,10 @@ public class Scoreboard {
     public Scoreboard() {
         this.playerXScore = 0;
         this.playerOScore = 0;
-        this.tie=0;
+        this.tie = 0;
     }
-    public void showScoreboard()
-    {
+
+    public void showScoreboard() {
         System.out.println("Scoreboard:");
         System.out.print("Player X ----> ");
         System.out.println(playerXScore);
@@ -19,8 +19,6 @@ public class Scoreboard {
         System.out.println(playerOScore);
         System.out.print("Tie ----> ");
         System.out.println(tie);
-
-
     }
 
     public int getPlayerXScore() {
