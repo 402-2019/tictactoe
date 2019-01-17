@@ -16,29 +16,27 @@ public class TicTacToeGame {
     private Scoreboard scoreboard;
     private boolean gameFinished;
 
-    public TicTacToeGame(){
+    public TicTacToeGame() {
         board = new Board();
-        scoreboard =new Scoreboard();
-        gameFinished= false;
+        scoreboard = new Scoreboard();
+        gameFinished = false;
     }
 
-    public void promptNextPlayer(){
-        switch(board.getCurrentPlayer()){
+    public void promptNextPlayer() {
+        switch (board.getCurrentPlayer()) {
             case X:
                 System.out.println("It's player " + board.getSymbol(board.getCurrentPlayer()) + "'s turn. Please enter the coordinates of your next move as x,y: ");
                 break;
             case O:
                 System.out.println("It's player " + board.getSymbol(board.getCurrentPlayer()) + "'s turn. Please enter the coordinates of your next move as x,y: ");
                 break;
-
         }
     }
 
-    public void playGame(){
+    public void playGame() {
         Scanner keyboardScanner = new Scanner(System.in);
 
-        while(gameFinished==false) {
-
+        while (!gameFinished) {
             while (board.getWinner() == null && !board.getIsTie()) {
                 board.printBoard();
                 promptNextPlayer();
@@ -58,7 +56,6 @@ public class TicTacToeGame {
                 scoreboard.setTie(scoreboard.getTie() + 1);
                 System.out.println("It is a tie!");
             } else {
-
                 if (board.getWinner().equals(Player.X)) {
                     scoreboard.setPlayerXScore(scoreboard.getPlayerXScore() + 1);
                 } else {
@@ -68,28 +65,20 @@ public class TicTacToeGame {
                 System.out.println("Player " + board.getWinner() + " has won the game!");
             }
 
+            scoreboard.showScoreboard();
             System.out.println("Would you like to play again? (enter \"yes\" for replay and \"no\" for showing the scoreboard and finishing the game)");
             String line = keyboardScanner.nextLine();
-            if (line.equals("no"))
-            {
+            if (line.equals("no")) {
                 scoreboard.showScoreboard();
-                gameFinished=true;
+                gameFinished = true;
+            } else {
+                board = new Board();
             }
-            else
-            {
-                board= new Board();
-            }
-
         }
-
-
-
     }
 
-    public static void main(String args[]){
+    public static void main(String args[]) {
         TicTacToeGame game = new TicTacToeGame();
         game.playGame();
     }
-
-
 }
