@@ -14,7 +14,7 @@ public class TicTacToeGame {
 
     private Board board;
     private Scoreboard scoreboard;
-    private boolean gameFinished;
+    private boolean gameFinished; // boolean indicating whether game is finished or not
 
     public TicTacToeGame() {
         board = new Board();
@@ -36,6 +36,9 @@ public class TicTacToeGame {
     public void playGame() {
         Scanner keyboardScanner = new Scanner(System.in);
 
+        // The outer while loop is for the game to continue after each round.
+        // It stops when player says they do not want to continue.
+        // The inner while loop checks whether a round is finished or not.
         while (!gameFinished) {
             while (board.getWinner() == null && !board.getIsTie()) {
                 board.printBoard();
@@ -50,6 +53,7 @@ public class TicTacToeGame {
                 }
             }
 
+            // Printing the board and the state of the finished game
             board.printBoard();
 
             if (board.getIsTie()) {
@@ -66,6 +70,7 @@ public class TicTacToeGame {
             }
 
             scoreboard.showScoreboard();
+            // Checks if player wants to continue or not, and do the appropriate action
             System.out.println("Would you like to play again? (enter \"yes\" for replay and \"no\" for showing the scoreboard and finishing the game)");
             String line = keyboardScanner.nextLine();
             if (line.equals("no")) {
