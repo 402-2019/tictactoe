@@ -12,13 +12,14 @@ public class Board {
     private Player currentPlayer;
     private Player winner;
     private Player board[][];
-    private boolean isTie = false;
+    private boolean isTie;
 
     public Board() {
         board = new Player[3][3];
         initBoard();
         winner = null;
         currentPlayer = Player.X;
+        isTie = false;
     }
 
     private void initBoard() {
@@ -154,7 +155,7 @@ public class Board {
         return board[row][col];
     }
 
-    public boolean getIsTie(){
+    public boolean getIsTie() {
         return isTie;
     }
 }
