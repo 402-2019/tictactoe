@@ -57,7 +57,7 @@ public class TicTacToeGame {
             board.printBoard();
 
             if (board.getIsTie()) {
-                scoreboard.setTie(scoreboard.getTie() + 1);
+                scoreboard.incrementTies();
                 System.out.println("It is a tie!");
             } else {
                 if (board.getWinner().equals(Player.X)) {
@@ -69,12 +69,12 @@ public class TicTacToeGame {
                 System.out.println("Player " + board.getWinner() + " has won the game!");
             }
 
-            scoreboard.showScoreboard();
+            scoreboard.printScoreboard();
             // Checks if player wants to continue or not, and do the appropriate action
             System.out.println("Would you like to play again? (enter \"yes\" for replay and \"no\" for showing the scoreboard and finishing the game)");
             String line = keyboardScanner.nextLine();
             if (line.equals("no")) {
-                scoreboard.showScoreboard();
+                scoreboard.printScoreboard();
                 gameFinished = true;
             } else {
                 board = new Board();
